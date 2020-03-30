@@ -1,0 +1,14 @@
+void main() {
+    FILE * fr;
+    char path[100];
+    sprintf_s(path, 100, "C:/Users/ferster/Downloads/%d.bin", (1));
+    fopen_s(&fr, path, "rb");
+    char  temp[1];
+    int num = 0;
+    while (!feof(fr)) {
+        temp[0] = fgetc(fr);
+        printf("%02X ", (unsigned char)temp[0]);
+        num++;
+        if (num % 16 == 0) { printf("\n"); num -= 16; }
+    }
+}
